@@ -1,8 +1,7 @@
 package net.codejava.hibernate;
 
 import daoos.GenericDAO;
-import domain.Baas;
-import domain.Dog;
+import domain.*;
 import java.io.*;
 import java.util.*;
 
@@ -11,28 +10,7 @@ import javax.persistence.*;
 public class MainStage {
 	public static void main(String[] args) {
 		
-			EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("BaasHond");
-	 		EntityManager entityManager = emFactory.createEntityManager();
-	 		Dog doggie = new Dog("snakkie");
-	 		entityManager.getTransaction().begin();
-	 		entityManager.persist(doggie);
-	 		
-	 		Dog doggie2 = new Dog("flurby");
-	 		entityManager.persist(doggie2);
-	 		
-	 		Baas baas = new Baas("Corrie");
-	 		baas.addDog(doggie);
-	 		baas.addDog(doggie2);
-	 		
-	 		entityManager.persist(baas);
-	 		entityManager.getTransaction().commit();
-			emFactory.close();
-	
-/*
-
-	public static void main(String[] args) {
-
-		Dog doggie = new Dog("snakkie");
+Dog doggie = new Dog("snakkie");
 		
 		Class c = doggie.getClass();
 		GenericDAO<Dog> genDAO = new GenericDAO<Dog>(c);
@@ -42,8 +20,12 @@ public class MainStage {
 		genDAO = new GenericDAO<Dog>(c);
 		doggie = genDAO.readObject(5);
 		
+		
+		GenericDAO<Dog> genDAO2 = new GenericDAO<Dog>(c);
+		Dog doggie2 = genDAO2.readObject(11);
 		List<Dog> doggies = new ArrayList<Dog>();
 		doggies.add(doggie);
+		doggies.add(doggie2);
 		
 		
 		
@@ -52,7 +34,7 @@ public class MainStage {
 	//	Class b = baas.getClass();
 		GenericDAO <Baas> genDAObaas = new GenericDAO<Baas>();
 		genDAObaas.createObject(baas);
-	*/	
+
 	}
 	
 	

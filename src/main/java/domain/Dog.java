@@ -8,19 +8,9 @@ public class Dog {
 
 	private long id;
 	private String name;
-	
 	private Baas baasje;
 
-	@ManyToOne
-	@JoinColumn
-	public Baas getBaasje() {
-		return baasje;
-	}
-
-	public void setBaasje(Baas baasje) {
-		this.baasje = baasje;
-	}
-
+	
 	public Dog() {}
 
 	public Dog(String name) {
@@ -48,10 +38,21 @@ public class Dog {
 		this.name = name;
 	}
 
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn
+	public Baas getBaasje() {
+		return baasje;
+	}
+
+	public void setBaasje(Baas baasje) {
+		this.baasje = baasje;
+	}
+
+	
 
 	@Override
 	public String toString() {
-		return "Dog [id=" + id + ", name=" + name + "]";
+		return "Dog [id=" + id + ", name=" + name + ", baasje=" + baasje + "]";
 	}
 	
 	
