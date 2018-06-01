@@ -7,18 +7,18 @@ import javax.persistence.*;
 public class Dog {
 
 	private long id;
-	
 	private String name;
-	private Baas baas;
 	
-	
-	@OneToOne(mappedBy = "dog")
-	public Baas getBaas() {
-		return baas;
+	private Baas baasje;
+
+	@ManyToOne
+	@JoinColumn
+	public Baas getBaasje() {
+		return baasje;
 	}
 
-	public void setBaas(Baas baas) {
-		this.baas = baas;
+	public void setBaasje(Baas baasje) {
+		this.baasje = baasje;
 	}
 
 	public Dog() {}

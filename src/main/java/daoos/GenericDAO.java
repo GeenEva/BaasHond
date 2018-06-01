@@ -27,7 +27,7 @@ public class GenericDAO<T> {
 	
 	
 	public GenericDAO(Class<T> classToSet){
-		this.entityManagerFactory = Persistence.createEntityManagerFactory("BookStore");
+		this.entityManagerFactory = Persistence.createEntityManagerFactory("BaasHond");
 		this.entityManager = entityManagerFactory.createEntityManager();
 		this.clazz = classToSet;
 	}
@@ -42,10 +42,22 @@ public class GenericDAO<T> {
 		entityManagerFactory.close();
 	}
 
+/*	public void createObjectWithList(T entity) {
+	
+		entityManager.getTransaction().begin();
+		for (Dog dog: dogs) {
+			Feature feature = new Feature;
+		}
+		entityManager.persist(entity);
+		entityManager.getTransaction().commit();
+		entityManagerFactory.close();
+	}
+	*/
 	
 	public T readObject(long id) {
 		
 		entityManager.clear(); //empties the entitymanager from persistence context
+		
 		T entity = entityManager.find(clazz, id);
 		entityManagerFactory.close();
 			

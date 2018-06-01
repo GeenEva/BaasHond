@@ -1,5 +1,8 @@
 package domain;
 
+import java.util.*;
+import java.io.*;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,16 +11,20 @@ public class Baas {
 	
 	private long id;
 	private String name;
+
+	private List<Dog> dogs = new ArrayList<>();
 	
-	@OneToOne(mappedBy="baas")
-	private Dog dog;
-	
-	
+
 	public Baas() {}
 	
-	public Baas(String name, Dog dog) {
+	public Baas(String name) {
 		this.name = name;
-		this.dog = dog;
+	}
+	
+	
+	public Baas(String name, List<Dog> dog) {
+		this.name = name;
+		dogs = dog;
 	}
 	
 	
@@ -39,14 +46,26 @@ public class Baas {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
+	@OneToMany(fetch=FetchType.EAGER) 
+	@JoinColumn(name = "baas_id")
+	public List<Dog> getDogs() {
+		return dogs;
+	}
+	
+	public void addDog(Dog dog) {
+		dogs.add(dog);
+	}
+	
+	public void setDogs(List<Dog> dogs) {
+		this.dogs = dogs;
 
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "dog_id")	
-	public Dog getDog() {
-		return dog;
 	}
 
-	public void setDog(Dog dog) {
-		this.dog = dog;
+
+	@Override
+	public String toString() {
+		return "Baas [id=" + id + ", name=" + name + ", dogs=" + dogs + "]";
 	}
 }
