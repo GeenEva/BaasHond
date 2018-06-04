@@ -39,7 +39,7 @@ public class GenericDAO<T> {
 		entityManager.getTransaction().begin();
 		entityManager.persist(entity);
 		entityManager.getTransaction().commit();
-		entityManagerFactory.close();
+//		entityManagerFactory.close();	
 	}
 
 /*	public void createObjectWithList(T entity) {
@@ -59,7 +59,7 @@ public class GenericDAO<T> {
 		entityManager.clear(); //empties the entitymanager from persistence context
 		
 		T entity = entityManager.find(clazz, id);
-		entityManagerFactory.close();
+	//	entityManagerFactory.close();
 			
 		return entity;
 	}
@@ -70,7 +70,7 @@ public class GenericDAO<T> {
 		entityManager.getTransaction().begin();
 		entityManager.merge(entity);
 		entityManager.getTransaction().commit();
-		entityManagerFactory.close();
+	//	entityManagerFactory.close();
 		
 	}
 	
@@ -82,8 +82,12 @@ public class GenericDAO<T> {
 			T entity = entityManager.find(clazz, id);
 			entityManager.remove(entity);
 			entityManager.getTransaction().commit();
-			entityManagerFactory.close();
+	//		entityManagerFactory.close();
 		
+	}
+	
+	public void closeEntityFactory() {
+		entityManagerFactory.close();
 	}
 	
 //	ALTERNATIVE WAY FOR READ METHOD, BUT	
