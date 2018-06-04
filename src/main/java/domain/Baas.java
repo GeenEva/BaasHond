@@ -1,7 +1,6 @@
 package domain;
 
 import java.util.*;
-import java.io.*;
 
 import javax.persistence.*;
 
@@ -13,6 +12,7 @@ public class Baas {
 	private long id;
 	private String name;
 	private List<Dog> dogs = new ArrayList<>();
+	private Adres adres;
 	
 	public Baas() {}
 
@@ -27,7 +27,7 @@ public class Baas {
 		this.id = id;
 	}
 
-	@Column(name = "name")
+	@Column(name = "baas_name")
 	public String getName() {
 		return name;
 	}
@@ -44,11 +44,22 @@ public class Baas {
 	public void setDogs(List<Dog> dogs) {
 		this.dogs = dogs;
 	}
+	
+	@Embedded
+	public Adres getAdres() {
+		return adres;
+	}
+
+	public void setAdres(Adres adres) {
+		this.adres = adres;
+	}
 
 	@Override
 	public String toString() {
-		return "Baas [id=" + id + ", name=" + name + ", dogs=" + dogs + "]";
+		return "Baas [id=" + id + ", name=" + name + ", dogs=" + dogs + ", adres=" + adres + "]";
 	}
+
+	
 	
 	
 }

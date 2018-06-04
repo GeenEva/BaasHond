@@ -39,7 +39,7 @@ public class GenericDAO<T> {
 		entityManager.getTransaction().begin();
 		entityManager.persist(entity);
 		entityManager.getTransaction().commit();
-
+		
 	}
 
 /*	public void createObjectWithList(T entity) {

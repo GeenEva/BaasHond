@@ -25,7 +25,7 @@ public class Dog {
 		this.id = id;
 	}
 	
-	@Column(name = "name")
+	@Column(name = "dog_name")
 	public String getName() {
 		return name;
 	}
@@ -46,6 +46,6 @@ public class Dog {
 	
 	@Override
 	public String toString() {
-		return "Dog [id=" + id + ", name=" + name + ", baas=" + baas + ", baas_id=" + baas.getId() + "]";
+		return "Dog [id=" + id + ", name=" + name + "]";
 	}
 }
