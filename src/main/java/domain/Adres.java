@@ -10,8 +10,9 @@ public class Adres {
 	private String street;
 	private Integer houseNumber;
 	private String city;
+	private PostalCode postalCode;
 	
-	
+
 	public Adres() {}
 	
 	public Adres(String street, Integer houseNumber, String city) {
@@ -19,9 +20,6 @@ public class Adres {
 		this.houseNumber = houseNumber;
 		this.city = city;
 	}
-
-
-	
 
 
 	public String getStreet() {
@@ -53,11 +51,55 @@ public class Adres {
 		this.city = city;
 	}
 
+	@Embedded
+	public PostalCode getPostalCode() {
+		return postalCode;
+	}
 
+	public void setPostalCode(PostalCode postalCode) {
+		this.postalCode = postalCode;
+	}
+	
 	@Override
 	public String toString() {
-		return ", street=" + street + ", houseNumber=" + houseNumber + ", city=" + city + "]";
+		return "Adres [street=" + street + ", houseNumber=" + houseNumber + ", city=" + city + ", postalCode="
+				+ postalCode + "]";
+	}
+
+
+
+	//@Embeddable
+	public static class PostalCode {
+		
+		private int numbers;
+		private String letters;
+		
+		
+		public PostalCode() {}
+		
+		
+		public int getNumbers() {
+			return numbers;
+		}
+		public void setNumbers(int numbers) {
+			this.numbers = numbers;
+		}
+	
+		public String getLetters() {
+			return letters;
+		}
+		public void setLetters(String letters) {
+			this.letters = letters;
+		}
+
+		@Override
+		public String toString() {
+			return "PostalCode [numbers=" + numbers + ", letters=" + letters + "]";
+		}
+		
+		
 	}
 	
 	
+
 }

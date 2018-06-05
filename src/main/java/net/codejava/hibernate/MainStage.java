@@ -16,7 +16,7 @@ public class MainStage {
 		hond2.setName("mop");
 		
 		Baas baasje = new Baas();
-		baasje.setName("RobertoFermicello");	
+		baasje.setName("JustRoberto");	
 		
 		hond.setBaas(baasje);
 		hond2.setBaas(baasje);
@@ -25,29 +25,35 @@ public class MainStage {
 		hondjes.add(hond);
 		hondjes.add(hond2);
 		
-		
 		baasje.setDogs(hondjes);
 		
-		Adres adres = new Adres("typo", 232, "nunu");
-
+		Adres adres = new Adres("strposfi9asss", 43832, "serieus");
+		Adres.PostalCode postalCode = new Adres.PostalCode();
+		postalCode.setLetters("as");
+		postalCode.setNumbers(6348);
+		System.out.println(postalCode.toString());
 		
+		
+		adres.setPostalCode(postalCode);
+		System.out.println(adres.toString());
 		baasje.setAdres(adres);
+			
 		System.out.println(baasje.toString());
-		
-	//	GenericDAO genDAO3 = new GenericDAO();
-	//	genDAO3.createObject(adres);
 		
 		
 		GenericDAO genDAO2 = new GenericDAO();
 		genDAO2.createObject(baasje);
-		
+		/*		
 		Dog hodje = new Dog();
 		hodje.setName("Hodje");
 		hodje.setBaas(baasje);
 		
 		genDAO2.createObject(hodje);
-		genDAO2.closeEntityManager();
 		
+		
+		
+		genDAO2.closeEntityManager();
+	*/	
 	
 	}
 	

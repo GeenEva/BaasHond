@@ -45,7 +45,7 @@ public class Baas {
 		this.dogs = dogs;
 	}
 	
-	@Embedded
+	@Embedded()
 	public Adres getAdres() {
 		return adres;
 	}
