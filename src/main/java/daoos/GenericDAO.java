@@ -42,17 +42,7 @@ public class GenericDAO<T> {
 		
 	}
 
-/*	public void createObjectWithList(T entity) {
-	
-		entityManager.getTransaction().begin();
-		for (Dog dog: dogs) {
-			Feature feature = new Feature;
-		}
-		entityManager.persist(entity);
-		entityManager.getTransaction().commit();
-		entityManagerFactory.close();
-	}
-	*/
+
 	
 	public T readObject(long id) {
 		
@@ -64,6 +54,15 @@ public class GenericDAO<T> {
 		return entity;
 	}
 	
+	//Alternative read method
+	public T readObject(Class<?> type, long id) {
+		 
+		entityManager.clear(); //empties the entitymanager from persistence context
+		T entity = (T) entityManager.find(type, id);
+			
+		return entity;
+	}
+	
 	
 	public void updateObject(T entity) {
 		
@@ -71,7 +70,6 @@ public class GenericDAO<T> {
 		entityManager.merge(entity);
 		entityManager.getTransaction().commit();
 	
-		
 	}
 	
 	
@@ -91,19 +89,16 @@ public class GenericDAO<T> {
 	}
 	
 	
-//	ALTERNATIVE WAY FOR READ METHOD, BUT	
-/*	DON'T KNOW HOW TO WORK OUT THE READ METHOD WITH THIS SIGNATURE...
- * 	public T readObject(Class<?> type, long id) {
- 
-		entityManager.clear(); //empties the entitymanager from persistence context
-		entityManager.find(type, id);
-		
-			//	System.out.println((entityManager.find(type.getClass(), id)).toString());
-		
-		entityManagerFactory.close();
-			
-		return null;
-	}
-*/
 	
+	/*	public void createObjectWithList(T entity) {
+	
+	entityManager.getTransaction().begin();
+	for (Dog dog: dogs) {
+		Feature feature = new Feature;
+	}
+	entityManager.persist(entity);
+	entityManager.getTransaction().commit();
+	entityManagerFactory.close();
+}
+*/
 }
