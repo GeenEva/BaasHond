@@ -14,8 +14,16 @@ public class Baas {
 	private List<Dog> dogs = new ArrayList<>();
 	private Adres adres;
 	
+	
 	public Baas() {}
+	
+	public Baas(String name, Adres adres) {
+		this.name = name;
+		this.adres = adres;
+	}
 
+	
+	
 	@Id
 	@Column(name = "baas_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

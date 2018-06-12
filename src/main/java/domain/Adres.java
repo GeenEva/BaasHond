@@ -15,10 +15,11 @@ public class Adres {
 
 	public Adres() {}
 	
-	public Adres(String street, Integer houseNumber, String city) {
+	public Adres(String street, Integer houseNumber, String city, PostalCode postalCode) {
 		this.street = street;
 		this.houseNumber = houseNumber;
 		this.city = city;
+		this.postalCode = postalCode;
 	}
 
 
@@ -81,6 +82,7 @@ public class Adres {
 		public int getNumbers() {
 			return numbers;
 		}
+		
 		public void setNumbers(int numbers) {
 			this.numbers = numbers;
 		}
